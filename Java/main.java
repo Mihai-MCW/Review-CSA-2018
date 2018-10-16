@@ -6,8 +6,11 @@ public class main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner( System.in );
 		System.out.print("Exercice: ");
-		int Choice = 12; //scanner.nextInt();
-		
+		int Choice = scanner.nextInt();// 12; // commented for debugging purposes (lazy copy paste)
+		/* I have no safety implemented in the exercices. 
+		** They only do what they're meant to, 
+		** given that you give them what it was supposed to be given
+		*/
 		switch(Choice){
 			case 1: {Hello();break;}
 			case 2:{WordIndex();break;}
@@ -101,7 +104,6 @@ public class main {
 		System.out.print("Your word is: ");
 		Scanner scanner = new Scanner(System.in);
 		String word = scanner.nextLine(); 
-        //String word = "qzeuzteqiea zei ahy";
         word = word.replaceAll("[AaEeIiOoUu]", "");
         System.out.println(word);
 	}
@@ -163,9 +165,9 @@ public class main {
         chosenWord = stringArray[chosenWordIndex];
         guessedIndexes  = new int[chosenWord.length()];
         Arrays.fill(guessedIndexes, 0);
-        //debuging
+        /*debuging
         System.out.println("the word is: " + chosenWord);
-        //
+        */
         while(wrongTimes < tries && after < chosenWord.length()){
             HangmanDraw(wrongTimes);
             HangmanHideWord(chosenWord,guessedIndexes,triedLetters);
@@ -179,7 +181,6 @@ public class main {
                     guessedIndexes[i]=1;
                     after++;
                 }
-                
             }
              if(before != after) System.out.print("\nYou are correct!\n");
              else{
@@ -189,13 +190,11 @@ public class main {
             }
             before=after;
         }
-        
         HangmanDraw(wrongTimes);
         Arrays.fill(guessedIndexes, 1);
         HangmanHideWord(chosenWord,guessedIndexes,triedLetters);
         if(wrongTimes < tries){
             System.out.print("\nCongratulations, you guessed the word!\n");
-            
         }
         else System.out.print("\nYou failed to guess all the letters. The word is " + chosenWord + " !\n");
     }
